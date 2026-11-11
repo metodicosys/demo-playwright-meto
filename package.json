@@ -1,0 +1,21 @@
+{
+  "name": "demo-playwright-meto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "auth:storage:chrome": "cross-env PW_BROWSER=chromium NODE_ENV=${NODE_ENV:-default} ts-node scripts/generate-storage.ts"
+  },
+  "keywords": [],
+  "author": "METO",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^26.6.6",
+    "playwright-bdd": "^9.2.1"
+  },
+  "dependencies": {
+    "winston": "^3.19.0"
+  }
+}

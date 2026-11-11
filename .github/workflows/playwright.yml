@@ -1,0 +1,30 @@
+name: Playwright
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      CI: "true"
+      NODE_ENV: desa
+      ROLE: admin
+      BASE_URL_DESA: ${{ secrets.BASE_URL_DESA }}
+      demo_web_desa_admin_username: ${{ secrets.DEMO_WEB_DESA_ADMIN_USERNAME }}
+      demo_web_desa_admin_password: ${{ secrets.DEMO_WEB_DESA_ADMIN_PASSWORD }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm ci
+      - run: cp environments.example.conf environments.conf
+      - run: npx playwright install --with-deps chromium
+      - run: npx bddgen
+      - run: npx playwright test --grep "@metodio"

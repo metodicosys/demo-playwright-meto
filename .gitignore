@@ -1,0 +1,17 @@
+
+# Playwright
+node_modules/
+.env
+.env.*
+!.env.example
+/credential.json
+/environments.conf
+/test-results/
+/playwright-report/
+/screenshots/
+/logs/*
+!/logs/.gitkeep
+/\.features-gen/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
